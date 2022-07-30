@@ -34,7 +34,7 @@ const bstreeview = class {
     templates = {
         treeview: parseDOM(`<div class="bstreeview"></div>`),
         treeviewItem: parseDOM(
-            `<div role="treeitem" class="list-group-item list-group-item-action" data-bs-toggle="collapse"></div>`
+            `<div role="treeitem" class="list-group-item list-group-item-action collapsed" data-bs-toggle="collapse"></div>`
         ),
         treeviewGroupItem: parseDOM(
             `<div role="group" class="list-group collapse" id="itemid"></div>`
@@ -73,16 +73,6 @@ const bstreeview = class {
         // Update angle icon on collapse
         [...this.element.querySelectorAll(".list-group-item")].forEach((x) =>
             x.addEventListener("click", (e) => {
-                [...this.element.querySelectorAll(".state-icon")].forEach(
-                    (x) => {
-                        x.classList.toggle(
-                            ...this.settings.expandIcon.split(" ")
-                        );
-                        x.classList.toggle(
-                            ...this.settings.collapseIcon.split(" ")
-                        );
-                    }
-                );
                 // navigate to href if present
                 if (e.target.hasAttribute("href")) {
                     if (this.settings.openNodeLinkOnNewTab) {
@@ -139,16 +129,16 @@ const bstreeview = class {
                 "data-bs-target",
                 `#${this.itemIdPrefix}${node.nodeId}`
             );
+            treeItem.setAttribute("role", "button");
             treeItem.setAttribute("style", "padding-left:" + leftPadding);
             treeItem.setAttribute("aria-level", depth);
             // Set Expand and Collapse icons.
             if (node.nodes) {
                 const treeItemStateIcon =
                     this.templates.treeviewItemStateIcon.cloneNode();
-                const classes = node.expanded
-                    ? this.settings.expandIcon
-                    : this.settings.collapseIcon;
-                treeItemStateIcon.classList.add(...classes.split(" "));
+                treeItemStateIcon.classList.add(
+                    ...this.settings.expandIcon.split(" ")
+                );
                 treeItem.append(treeItemStateIcon);
             }
             // set node icon if exist.
@@ -182,6 +172,7 @@ const bstreeview = class {
                 parentElement.append(treeGroup);
                 this.build(treeGroup, node.nodes, depth);
                 if (node.expanded) {
+                    parentElement.classList.remove("collapsed");
                     treeGroup.classList.add(this.settings.expandClass);
                 }
             }
