@@ -189,11 +189,9 @@ const bstreeview = class {
     };
 };
 
-(() => (window.bstreeview = bstreeview))();
-
 ((root) => {
     if (typeof define === "function" && define.amd) {
-        define(factory);
+        define(bstreeview);
     } else if (typeof module === "object" && module.exports) {
         module.exports = bstreeview;
     } else {
