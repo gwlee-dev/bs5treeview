@@ -6,6 +6,7 @@
  Copyright 2020
  License: Apache License 2.0
  Project: https://github.com/chniter/bstreeview
+ Project: https://github.com/gwlee-dev/vanillajs-bs5treeview (vanilla js)
 */
 .bstreeview {
     position: relative;
@@ -17,8 +18,8 @@
     word-wrap: break-word;
     background-color: #fff;
     background-clip: border-box;
-    border: 1px solid rgba(0,0,0,.125);
-    border-radius: .25rem;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
 
     padding: 0;
     overflow: hidden;
@@ -26,6 +27,10 @@
 
 .bstreeview .list-group {
     margin-bottom: 0;
+}
+
+.bstreeview .list-group.collapsing {
+    border-radius: 0 !important;
 }
 
 .bstreeview .list-group-item {
@@ -36,19 +41,15 @@
     cursor: pointer;
 }
 
-.bstreeview .list-group-item:hover {
-    background-color:#dee2e6;
-}
-
 .bstreeview > .list-group-item:first-child {
     border-top-width: 0;
 }
 
 .bstreeview .state-icon {
-    margin-right: 8px;
-    width: 12px;
+    margin-right: 0.5rem;
+    width: 0.75rem;
     text-align: center;
 }
 .bstreeview .item-icon {
-    margin-right: 5px;
+    margin-right: 0.5rem;
 }

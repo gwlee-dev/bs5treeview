@@ -1,9 +1,8 @@
-# Bootstrap 5 Tree View
+# Vanilla-JS Bootstrap 5 Tree View
 
-this is a fork of https://github.com/chniter/bstreeview.
-For use with bootstrap 5 the attributes have been changed from data-target and data-toggle to the new data-bs-target and data-bs-toogle syntax.
+this is a fork of nhmvienna/bs5treeview. For use without JQuery.
 
-A very simple plugin to build a basic and elegant Treeview with boostrap 5.
+A very simple plugin to build a basic and elegant Treeview with bootstrap 5.
 
 
 
@@ -11,8 +10,7 @@ A very simple plugin to build a basic and elegant Treeview with boostrap 5.
 
 Where provided these are the actual versions bootstrap-treeview has been tested against.
 
-- [Bootstrap v5)](http://getbootstrap.com/)
-- [jQuery v3.4.1 (>= 1.9.0)](http://jquery.com/)
+- [Bootstrap v5.2](http://getbootstrap.com/)
 
 ### Usage
 
@@ -23,7 +21,6 @@ Add the following resources for the bootstrap-treeview to function correctly.
 <link href="bootstrap.css" rel="stylesheet">
 
 <!-- Required Javascript -->
-<script src="jquery.js"></script>
 <script src="bstreeview.js"></script>
 ```
 
@@ -36,12 +33,12 @@ The component will bind to any existing DOM element.
 Basic usage may look something like this.
 
 ```javascript
-function getTree() {
+const getTree = () => {
   // Some logic to retrieve, or generate tree structure
   return data;
 }
 
-$('#tree').bstreeview({ data: getTree() });
+const tree = new bstreeview(document.querySelector("#tree"), { data: getTree() });
 ```
 
 
@@ -52,51 +49,53 @@ In order to define the hierarchical structure needed for the tree it's necessary
 Example
 
 ```javascript
-var tree = [
+const json = [
   {
-    text: "Node 1",
-    icon: "fa fa-folder",
-    expanded: true,
+    text: "Inbox",
+    icon: "bi bi-inbox-fill",
     nodes: [
       {
-        text: "Sub Node 1",
-        icon: "fa fa-folder",
+        text: "Office",
+        icon: "bi bi-inbox-fill",
         nodes: [
           {
-            id:    "sub-node-1",
-            text:  "Sub Child Node 1",
-            icon:  "fa fa-folder",
-            class: "nav-level-3",
-            href:  "https://google.com"
+            icon: "bi bi-inbox-fill",
+            text: "Customers",
           },
           {
-            text: "Sub Child Node 2",
-            icon: "fa fa-folder"
-          }
-        ]
+            icon: "bi bi-inbox-fill",
+            text: "Co-Workers",
+          },
+        ],
       },
       {
-        text: "Sub Node 2",
-         icon: "fa fa-folder"
-      }
-    ]
+        icon: "bi bi-inbox-fill",
+        text: "Others",
+      },
+    ],
   },
   {
-    text: "Node 2",
-    icon: "fa fa-folder"
+    icon: "bi bi-archive-fill",
+    text: "Drafts",
   },
   {
-    text: "Node 3",
-    icon: "fa fa-folder"
+    icon: "bi bi-calendar",
+    text: "Calendar",
   },
   {
-    text: "Node 4",
-    icon: "fa fa-folder"
+    icon: "bi bi-telephone-fill",
+    text: "Contacts",
   },
   {
-    text: "Node 5",
-    icon: "fa fa-folder"
-  }
+    icon: "bi bi-trash-fill",
+    text: "Deleted Items",
+  },
+  {
+    icon: "bi bi-google",
+    text: "Go to Google",
+    class: "link-primary",
+    href: "https://google.com",
+  },
 ];
 ```
 
@@ -174,10 +173,10 @@ Open node link on new browser Tab, default is `true`.
 
 ```javascript
 // Example: initializing the bstreeview
-$('#tree').bstreeview({
+new bstreeview(document.querySelector("#tree"), {
   data: data,
-  expandIcon: 'fa fa-angle-down fa-fw',
-  collapseIcon: 'fa fa-angle-right fa-fw',
+  expandIcon: 'bi bi-chevron-down',
+  collapseIcon: 'bi bi-chevron-right',
   indent: 1.25,
   parentsMarginLeft: '1.25rem',
   openNodeLinkOnNewTab: true
