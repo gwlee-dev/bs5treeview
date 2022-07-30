@@ -1,6 +1,6 @@
 # Vanilla-JS Bootstrap 5 Tree View
 
-this is a fork of nhmvienna/bs5treeview. For use without JQuery.
+this is a fork of https://github.com/nhmvienna/bs5treeview. For use without JQuery.
 
 A very simple plugin to build a basic and elegant Treeview with bootstrap 5.
 
