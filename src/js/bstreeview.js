@@ -59,7 +59,7 @@ const bstreeview = class {
         this.nodes = [];
         // Retrieve bstreeview Json Data.
         if (this.settings.data) {
-            if (typeof this.settings.data === "String") {
+            if (typeof this.settings.data === "string") {
                 this.settings.data = JSON.parse(this.settings.data);
             }
             this.tree = [...this.settings.data];
