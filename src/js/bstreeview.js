@@ -21,13 +21,13 @@ const bstreeview = class {
      */
     pluginName = "bstreeview";
     defaults = {
-        expandIcon: "fa fa-angle-down fa-fw",
-        collapseIcon: "fa fa-angle-right fa-fw",
+        expandIcon: "bi bi-chevron-right",
         expandClass: "show",
         indent: 1.25,
         parentsMarginLeft: "1.25rem",
         openNodeLinkOnNewTab: true,
     };
+
     /**
      * bstreeview HTML templates.
      */
@@ -42,6 +42,7 @@ const bstreeview = class {
         treeviewItemStateIcon: parseDOM(`<i class="state-icon"></i>`),
         treeviewItemIcon: parseDOM(`<i class="item-icon"></i>`),
     };
+
     /**
      * BsTreeview Plugin constructor.
      * @param {*} element
